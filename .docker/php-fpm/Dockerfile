@@ -1,7 +1,16 @@
 FROM php:8.2.1-fpm
 
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends libssl-dev zlib1g-dev curl git unzip netcat libxml2-dev libpq-dev libzip-dev libpng-dev && \
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libssl-dev \
+    zlib1g-dev \
+    curl \
+    git \
+    unzip \
+    netcat \
+    libxml2-dev \
+    libpq-dev \
+    libzip-dev \
+    libpng-dev && \
     pecl install apcu -o -f redis && \
     docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql && \
     docker-php-ext-install -j$(nproc) zip opcache intl gd pdo_pgsql pgsql && \
@@ -22,4 +31,4 @@ RUN chown -R www:www /home/www-data/bash-history/
 
 USER www
 
-WORKDIR /var/www/symfony
+WORKDIR /var/www
