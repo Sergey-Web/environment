@@ -28,7 +28,7 @@ services:
         expose:
           - 9000
         volumes:
-            - ./:/var/www/
+            - ./manager:/var/www/manager
             - manager-bash-history:/home/www-data/bash-history/:rw
         depends_on:
             - postgres

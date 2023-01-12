@@ -1,15 +1,16 @@
 up:
 	docker-compose up -d
 
-init: down pull build up manager-init
+init: down pull build up composer-install
 
-manager-init: manager-composer-install
-
-manager-composer-install:
-	docker-compose exec manager-php-fpm composer install
+composer-install:
+	docker exec manager-php-fpm composer install
 
 down:
 	docker-compose down --remove-orphans
+
+down-clear:
+	docker-compose down -v --remove-orphans
 
 pull:
 	docker-compose pull

@@ -31,4 +31,4 @@ RUN chown -R www:www /home/www-data/bash-history/
 
 USER www
 
-WORKDIR /var/www
+WORKDIR /var/www/manager
